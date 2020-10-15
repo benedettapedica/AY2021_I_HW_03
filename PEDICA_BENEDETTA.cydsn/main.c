@@ -10,14 +10,15 @@
  * ========================================
 */
 #include "project.h"
+#include "InterruptRoutines.h"
 
 int main(void)
 {
-    CyGlobalIntEnable; /* Enable global interrupts. */
-
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-
+    CyGlobalIntEnable; 
+    UART_Start();
+    isr_UART_StartEx(CUSTOM_UART_isr);
     for(;;)
+   
     {
         /* Place your application code here. */
     }
