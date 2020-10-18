@@ -9,20 +9,15 @@
  *
  * ========================================
 */
-
-#ifndef __INTERRUPT_ROUTINES_H
-#define __INTERRUPT_ROUTINES_H
-
-#include "cytypes.h"
-#include "project.h"
-#include "ColourDriver.h"
-#include "Variables.h" 
+#include "Variables.h"
+#ifndef __INTERRUPT_TIMER__
+    #define __INTERRUPT_TIMER__
     
-#define TAIL 0xC0
-#define HEADER 0xA0
-
-CY_ISR_PROTO(CUSTOM_UART_isr);
-
+    #include "project.h"
+    #include "Variables.h"
+    
+    CY_ISR_PROTO(Custom_TIMER_ISR);
+    
 #endif
 
 /* [] END OF FILE */

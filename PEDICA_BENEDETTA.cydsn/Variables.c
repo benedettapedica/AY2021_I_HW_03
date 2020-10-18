@@ -9,20 +9,17 @@
  *
  * ========================================
 */
+#include "Variables.h"
+#include "Interrupt_Timer.h"
+#include "InterruptRoutines.h"
 
-#ifndef __INTERRUPT_ROUTINES_H
-#define __INTERRUPT_ROUTINES_H
-
-#include "cytypes.h"
-#include "project.h"
-#include "ColourDriver.h"
-#include "Variables.h" 
-    
-#define TAIL 0xC0
-#define HEADER 0xA0
-
-CY_ISR_PROTO(CUSTOM_UART_isr);
-
-#endif
+uint8_t time_passed=0;
+uint8_t header=0;
+uint8_t tail=0;
+uint8_t count=0;
+uint8_t end_transmission=0;
+uint8_t v_string=0;
+uint8_t error=0;
+uint8_t reset_timer=0;
 
 /* [] END OF FILE */

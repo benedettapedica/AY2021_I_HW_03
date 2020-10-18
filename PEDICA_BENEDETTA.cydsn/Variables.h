@@ -9,20 +9,15 @@
  *
  * ========================================
 */
-
-#ifndef __INTERRUPT_ROUTINES_H
-#define __INTERRUPT_ROUTINES_H
-
 #include "cytypes.h"
-#include "project.h"
-#include "ColourDriver.h"
-#include "Variables.h" 
-    
-#define TAIL 0xC0
-#define HEADER 0xA0
 
-CY_ISR_PROTO(CUSTOM_UART_isr);
-
-#endif
+extern uint8_t time_passed;
+extern uint8_t header;
+extern uint8_t tail;
+extern uint8_t count;
+extern uint8_t end_transmission;
+extern uint8_t v_string;
+extern uint8_t error; 
+extern uint8_t reset_timer;
 
 /* [] END OF FILE */

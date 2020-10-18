@@ -10,19 +10,16 @@
  * ========================================
 */
 
-#ifndef __INTERRUPT_ROUTINES_H
-#define __INTERRUPT_ROUTINES_H
-
-#include "cytypes.h"
-#include "project.h"
 #include "ColourDriver.h"
-#include "Variables.h" 
-    
-#define TAIL 0xC0
-#define HEADER 0xA0
 
-CY_ISR_PROTO(CUSTOM_UART_isr);
+colour c = {0,0,0};
 
-#endif
+void SetColour (colour c ) {
+
+    PWM_RG_WriteCompare1(c.red);
+    PWM_RG_WriteCompare2(c.green);
+    PWM_B_WriteCompare(c.blue);
+
+}
 
 /* [] END OF FILE */
