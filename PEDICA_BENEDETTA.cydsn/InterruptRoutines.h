@@ -15,12 +15,8 @@
 
 #include "cytypes.h"
 #include "project.h"
-#include "ColourDriver.h"
 #include "Variables.h" 
     
-#define TAIL 0xC0
-#define HEADER 0xA0
-
 CY_ISR_PROTO(CUSTOM_UART_isr);
 
 #endif

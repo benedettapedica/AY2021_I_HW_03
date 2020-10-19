@@ -11,13 +11,8 @@
 */
 #include "cytypes.h"
 
-extern uint8_t time_passed;
-extern uint8_t header;
-extern uint8_t tail;
-extern uint8_t count;
-extern uint8_t end_transmission;
-extern uint8_t v_string;
-extern uint8_t error; 
-extern uint8_t reset_timer;
+extern uint8_t time;
+extern uint8_t flag;
+extern uint8_t state;
 
 /* [] END OF FILE */

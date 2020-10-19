@@ -1,65 +1,51 @@
-/* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
- * ========================================
+/**
+* \file main.c
+* \brief Main source file for the Assignment 03.
+*
+* This source file allows to control the color of an RGB
+* LED through a Serial Port. 
+*
+* \author: Benedetta Pedica
+* \date: October 15, 2020
 */
+
 #include "project.h"
 #include "InterruptRoutines.h"
 #include "Interrupt_Timer.h"
+#include "stdio.h"
+
+uint8_t time=0;
+uint8_t flag=0;
+uint8_t state=0;
 
 int main(void)
 {
     CyGlobalIntEnable; 
+    
+    //initializing all the functions for PWMs, UART and TIMER
+    
     UART_Start();
     PWM_RG_Start();
-    PWM_B_Start();
-    
+    PWM_B_Start();    
     isr_timer_StartEx(Custom_TIMER_ISR);
     isr_UART_StartEx(CUSTOM_UART_isr);
+    
+    state=0;
+    time=0;
+    Timer_Start();   
+    
+    //setting values so that at the start the LED is OFF (0,0,0)
+  
+    PWM_RG_WriteCompare1(0);         
+    PWM_RG_WriteCompare2(0);          
+    PWM_B_WriteCompare(0);  
+    
     for(;;)
-   
     {      
-        if (end_transmission==1)
-        {
-            SetColour(c);
-            UART_PutString("Congifuration OK: all bytes acquired\n");  
-            count = 0;
-            Timer_Stop();
-            end_transmission=0;           
-        }
-        else if (time_passed == 1)
-        { 
-            UART_PutString("5 seconds have passed\n"); 
-            count = 0;
-            UART_Init();
-            Timer_Stop();
-            time_passed=0;
-        }
-        
-        else if (v_string == 1)
-        { 
-            UART_PutString("RGB LED Program $$$\n");
-            UART_Init();
-            count = 0;
-            Timer_Stop();
-            v_string = 0;
-        }
-        else if (error == 1)
-        { 
-            UART_PutString("Transmission error\n");
-            UART_Init();
-            count = 0;
-            Timer_Stop();
-            error = 0;
-        }
-            
+      
     }
 }
+                    
+   
 
 /* [] END OF FILE */
