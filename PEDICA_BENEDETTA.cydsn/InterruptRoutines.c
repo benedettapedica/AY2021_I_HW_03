@@ -52,7 +52,7 @@ CY_ISR(CUSTOM_UART_isr)
             default:
                 if(flag==1)
                 {           
-                 state++;     //increment to scan over all states
+                 state++;    //increment to scan over all states
                 }
                 else
                 {
@@ -64,7 +64,7 @@ CY_ISR(CUSTOM_UART_isr)
     switch(state)    
         {         
             case IDLE:
-                UART_PutString("Please, insert Header\r\n");
+                UART_PutString("Please, insert correct Header\r\n");
                 break;
                 
             case HEAD:
@@ -89,14 +89,17 @@ CY_ISR(CUSTOM_UART_isr)
             case TAIL:
                 if(input == TAIL_VALUE)
                 {
-                    UART_PutString("End\r\n");            
+                    UART_PutString("Success! LED correctly programmed\r\n");            
                     state=IDLE;     //going back to the IDLE state
                     flag=0;
                 }
                 else
                 {
-                    UART_PutString("Incorrect Tail\r\n");
-                    state=TAIL;   
+                    UART_PutString("Incorrect Tail, start again\r\n");
+                    PWM_RG_WriteCompare1(0);      //setting again initial conditions   
+                    PWM_RG_WriteCompare2(0);          
+                    PWM_B_WriteCompare(0); 
+                    state=0;   
                     flag=0;     //reset of the flag to start again the procedure
                 }
                 break;

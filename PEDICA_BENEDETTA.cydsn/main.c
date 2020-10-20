@@ -14,6 +14,8 @@
 #include "Interrupt_Timer.h"
 #include "stdio.h"
 
+//initializing control variables 
+
 uint8_t time=0;
 uint8_t flag=0;
 uint8_t state=0;
